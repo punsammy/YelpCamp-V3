@@ -1,0 +1,151 @@
+@media only screen and (min-width: 300px) {
+
+  #campground-container {
+    width: 600px;
+  }
+
+  .nav-campgrounds {
+    min-width: 300px;
+  }
+
+  .form-page {
+    margin-top: 5%;
+  }
+
+  .form-nav {
+    margin-bottom: 5%;
+  }
+
+}
+
+@media only screen and (min-width: 600px) {
+
+  html {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 4%;
+  }
+
+  .nav-bar {
+    width: 100%;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    opacity: 0.85;
+  }
+
+  #nav-item {
+    min-width: 100px;
+    color: #FFFFFF;
+  }
+
+  .field {
+    width: 50%;
+    min-width: 250px;
+    margin: auto;
+  }
+
+  .campground-form {
+    text-align: center;
+    position: relative;
+    max-width: 900px;
+    margin: auto;
+    background-color: #fefefe;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    border-radius: 10px;
+  }
+
+  .ui.form .field {
+    margin: auto;
+    margin-top: 2%;
+  }
+
+  button.ui.button {
+    margin-top: 2%;
+  }
+
+  .ui.secondary.button {
+    opacity: 0.85;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  h4 {
+    margin-top: 0;
+  }
+
+  .landing-title {
+    margin-bottom: 5%;
+    color: black;
+  }
+
+  .campgrounds-page {
+    min-width: 800px;
+  }
+
+  .campgrounds-title {
+    text-align: center;
+    margin-top: 3%;
+  }
+
+  .nav-campgrounds {
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 2%;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    max-height: 308px;
+    margin-bottom: 2%;
+    border-radius: 10px;
+  }
+
+  div.ui.three.column.grid {
+    margin: auto;
+    overflow: auto;
+  }
+
+  .campground-info {
+    text-align: center;
+    border-radius: 10px;
+    border-style: double;
+    box-shadow: 6px 6px 1px #888888;
+    border-color: #cccccc;
+    padding: 2%;
+  }
+
+  #campground-container {
+    max-width: 450px;
+    margin: auto;
+  }
+
+  #rightside-button {
+    float: right;
+  }
+
+  .landing-page {
+    text-align: center;
+    margin-top: 10%;
+    margin-left: 15%;
+    margin-right: 15%;
+    background-color: #c2c2c2;
+    padding: 10%;
+    border-radius: 5px;
+    border: double;
+    border-color: #FFFFFF;
+  }
+
+  .show-page {
+    width: 75%;
+    margin: auto;
+    margin-top: 3%;
+  }
+
+}

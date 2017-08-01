@@ -1,0 +1,32 @@
+<% include partials/header %>
+
+
+<div class="campgrounds-page">
+  <div class="nav-campgrounds">
+    <a href="/" class="ui secondary button">Go Back</a>
+    <a href="/campgrounds/new" class="ui secondary button" id="rightside-button">Add New</a>
+  </div>
+
+  <div class="campgrounds-title">
+    <h1>Welcome To YelpCamp!</h1>
+    <p>View our hand-picked campgrounds from all over the world</p>
+  </div>
+
+
+  <div class="ui three column grid">
+    <% campgrounds.forEach(function(campground) { %>
+      <div class="column" id="campground-container">
+        <div class="campground-info" "ui segment">
+          <img src="<%= campground.image %>">
+          <h4><%= campground.name  %></h4>
+          <p>
+            <a href="/campgrounds/<%= campground._id %>" class="ui secondary button">More Info</a>
+          </p>
+        </div>
+      </div>
+      <% }); %>
+    </div>
+</div>
+
+
+<% include partials/footer %>

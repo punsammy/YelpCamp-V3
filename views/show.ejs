@@ -1,0 +1,19 @@
+<% include partials/header %>
+
+<div class="nav-campgrounds">
+  <a href="/campgrounds" class="ui secondary button">Go Back</a>
+  <a href="/campgrounds/new" class="ui secondary button" id="rightside-button">Add New</a>
+</div>
+
+<div class="show-page">
+  <h1><%= campground.name %></h1>
+
+  <img src="<%= campground.image %>">
+
+  <p>
+    <%= campground.description %>
+  </p>
+</div>
+
+
+<% include partials/footer %>

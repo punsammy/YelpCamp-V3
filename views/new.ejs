@@ -1,0 +1,30 @@
+<% include partials/header %>
+
+<div class="form-page">
+
+  <div class="form-nav">
+    <a href="/campgrounds" class="ui secondary button">Go Back</a>
+  </div>
+
+
+  <div class="campground-form">
+    <h1>Create a New Campground</h1>
+    <form class="ui form" action="/campgrounds" method="POST">
+      <div class="field">
+        <label>Name</label>
+        <input type="text" name="name" placeholder="Name">
+      </div>
+      <div class="field">
+        <label>Image</label>
+        <input type="text" name="image" placeholder="Image Url">
+      </div>
+      <div class="field">
+        <label>Description</label>
+        <input type="text" name="description" placeholder="Description">
+      </div>
+      <button class="ui button" type="submit">Submit</button>
+    </form>
+  </div>
+</div>
+
+<% include partials/footer %>
