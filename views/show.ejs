@@ -8,11 +8,20 @@
 <div class="show-page">
   <h1><%= campground.name %></h1>
 
-  <img src="<%= campground.image %>">
+  <div class="image">
+    <img src="<%= campground.image %>">
+  </div>
 
   <p>
     <%= campground.description %>
   </p>
+
+<% campground.comments.forEach(function(comment){ %>
+  <p>
+    <strong><%= comment.author %></strong> - <%= comment.text %>
+  </p>
+<% }); %>
+
 </div>
 
 
