@@ -102,13 +102,23 @@
   img {
     display: block;
     width: 100%;
-    max-height: 308px;
     margin-bottom: 2%;
-    border-radius: 10px;
   }
 
   .image {
     display: inline-block;
+    width: 100%;
+  }
+
+  .show-image-container {
+    border: 1px solid #ecebec;
+    max-width: 1000px;
+    margin: auto;
+  }
+
+  .show-image-container img {
+    border-radius: 0;
+    margin-bottom: 0;
   }
 
   div.ui.three.column.grid {
@@ -118,11 +128,10 @@
 
   .campground-info {
     text-align: center;
-    border-radius: 10px;
     border-style: double;
     box-shadow: 6px 6px 1px #888888;
     border-color: #cccccc;
-    padding: 2%;
+    padding-bottom: 2%;
   }
 
   #campground-container {
@@ -150,7 +159,35 @@
     width: 75%;
     margin: auto;
     margin-top: 3%;
-    text-align: center;
+    display: inline-block;
   }
 
+  .campground-comments-section {
+    background-color: #ecebec;
+    padding: 7px;
+    text-align: left;
+  }
+
+  .add-comment-button {
+    height: 40px;
+  }
+
+  .pull-right {
+    float: right;
+  }
+
+  .pull-left {
+    float: left;
+  }
+
+  .ui.secondary.vertical.menu {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 3%;
+    margin-right: 1%;
+  }
+
+  hr {
+    border-top: 1px solid #FFFFFF;
+  }
 }

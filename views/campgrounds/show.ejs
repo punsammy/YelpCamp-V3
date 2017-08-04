@@ -1,26 +1,42 @@
 <% include ../partials/header %>
 
-<div class="nav-campgrounds">
-  <a href="/campgrounds" class="ui secondary button">Go Back</a>
-  <a href="/campgrounds/new" class="ui secondary button" id="rightside-button">Add New</a>
+<div class="ui secondary vertical menu">
+  <a href="/campgrounds" class="active item">Go Back</a>
+  <a href="/campgrounds/new" class="item">Add New</a>
+  <a href="" class="item">Info 1</a>
+  <a href="" class="item">Info 2</a>
+  <a href="" class="item">Info 3</a>
 </div>
 
 <div class="show-page">
-  <h1><%= campground.name %></h1>
+  <div class="show-image-container">
+    <div class="image">
+      <img src="<%= campground.image %>">
+      <h3 class="pull-right">$9.00/night</h3>
+      <h3 class="pull-left"><%= campground.name %></h3>
+    </div>
 
-  <div class="image">
-    <img src="<%= campground.image %>">
+    <p>
+      <%= campground.description %>
+    </p>
+
+    <div class="campground-comments-section">
+
+      <div class="add-comment-button">
+        <a class="ui green right floated button" href="/campgrounds/<%= campground._id %>/comments/new">Add New Comment</a>
+      </div>
+
+      <hr>
+
+      <% campground.comments.forEach(function(comment){ %>
+        <p>
+          <strong><%= comment.author %></strong><span class="pull-right">10 days ago</span>
+          <p><%= comment.text %></p>
+        </p>
+        <% }); %>
+    </div>
   </div>
 
-  <p>
-    <%= campground.description %>
-  </p>
-
-<% campground.comments.forEach(function(comment){ %>
-  <p>
-    <strong><%= comment.author %></strong> - <%= comment.text %>
-  </p>
-<% }); %>
 
 </div>
 
