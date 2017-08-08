@@ -168,6 +168,10 @@
     text-align: left;
   }
 
+  .campground.desc {
+    
+  }
+
   .add-comment-button {
     height: 40px;
   }
