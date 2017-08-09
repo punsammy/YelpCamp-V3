@@ -30,6 +30,11 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+// function will be called on every route
+app.use(function(req, res, next){
+  res.locals.currentUser = req.user;
+  next();
+});
 
 app.get('/', function(req, res) {
   res.render('landing');
@@ -157,7 +162,7 @@ app.get("/logout", function(req, res) {
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {
-    return next()
+    return next();
   }
   res.redirect("/login");
   console.log("You need to be logged in to gain access");

@@ -37,6 +37,7 @@
 
   #nav-item {
     min-width: 100px;
+    line-height: 30px;
     color: #FFFFFF;
   }
 
@@ -81,7 +82,8 @@
 
   .landing-title {
     margin-bottom: 5%;
-    color: black;
+    color: #FFFFFF;
+    text-shadow: 2px 2px #000000;
   }
 
   .campgrounds-page {
@@ -148,11 +150,13 @@
     margin-top: 10%;
     margin-left: 15%;
     margin-right: 15%;
-    background-color: #c2c2c2;
     padding: 10%;
     border-radius: 5px;
     border: double;
     border-color: #FFFFFF;
+    background-image: url("http://www.junkmail.co.za/blog/wp-content/uploads/2015/10/camping-equipment-for-sale.jpg");
+    background-size: cover;
+    background-position: center;
   }
 
   .show-page {
