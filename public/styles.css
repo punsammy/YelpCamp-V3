@@ -46,7 +46,7 @@
     margin: auto;
   }
 
-  .campground-form {
+  .yelp-general-form {
     text-align: center;
     position: relative;
     max-width: 900px;
@@ -169,7 +169,7 @@
   }
 
   .campground.desc {
-    
+
   }
 
   .add-comment-button {
