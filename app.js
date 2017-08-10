@@ -8,7 +8,7 @@ var express       = require('express'),
     Comment       = require('./models/comment'),
     User          = require("./models/user"),
     seedDb        = require('./seeds');
-
+//Requiring Routes
 var commentRoutes    = require("./routes/comments");
     campgroundRoutes = require("./routes/campgrounds");
     indexRoutes      = require("./routes/index");
@@ -42,8 +42,8 @@ app.use(function(req, res, next){
 });
 
 app.use(indexRoutes);
-app.use(commentRoutes);
-app.use(campgroundRoutes);
+app.use("/campgrounds/:id/comments", commentRoutes);
+app.use("/campgrounds", campgroundRoutes);
 
 app.listen(process.env.PORT || 3000, function(){
   console.log("Server is listening!");
