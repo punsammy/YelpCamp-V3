@@ -19,8 +19,8 @@ mongoose.connect('mongodb://localhost/yelp_camp', {useMongoClient: true});
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
-seedDb();
 mongoose.Promise = global.Promise;
+// seedDb();  //seed the database
 
 //Passport Configuration
 app.use(require("express-session")({
@@ -48,4 +48,3 @@ app.use("/campgrounds", campgroundRoutes);
 app.listen(process.env.PORT || 3000, function(){
   console.log("Server is listening!");
 });
-//hey
