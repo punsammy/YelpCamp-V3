@@ -208,6 +208,10 @@
     display: inline-block;
   }
 
+  #delete-form {
+    display: inline;
+  }
+
   .campground-comments-section {
     background-color: #ecebec;
     padding: 7px;
