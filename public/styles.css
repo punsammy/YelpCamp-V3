@@ -166,7 +166,6 @@
   .campground-info {
     text-align: center;
     border-style: double;
-    box-shadow: 4px 4px 4px #888888;
     border-color: #cccccc;
     padding-bottom: 2%;
   }

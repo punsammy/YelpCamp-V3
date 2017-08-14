@@ -5,7 +5,7 @@
       <div class="ui secondary vertical menu">
         <a href="/campgrounds" class="active item">Go Back</a>
         <a href="/campgrounds/new" class="item">Add New</a>
-        <a href="" class="item">Info 1</a>
+        <a href="/" class="item">Info 1</a>
         <a href="" class="item">Info 2</a>
         <a href="" class="item">Info 3</a>
       </div>
@@ -21,6 +21,7 @@
           <%= campground.description %>
           <p>_______</p>
           <h4><em>Submitted by <%= campground.author.username %></em></h4>
+          <a href="/campgrounds/<%= campground._id %>/edit" class="ui yellow button">Edit</a>
         </div>
 
         <div class="campground-comments-section">
