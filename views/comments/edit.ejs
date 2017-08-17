@@ -1,0 +1,25 @@
+<% include ../partials/header %>
+
+
+<div class="form-page">
+
+  <div class="form-nav">
+    <a href="/campgrounds/<%= campground_id %>" class="ui black button"><i class="angle double left icon"></i>Go Back</a>
+  </div>
+
+
+  <div class="yelp-general-form">
+    <h1>Edit Comment</h1>
+    <form class="ui form" action="/campgrounds/<%= campground_id %>/comments/<%= comment._id %>?_method=PUT" method="POST">
+      <div class="field">
+        <textarea name="comment[text]"><%= comment.text %></textarea>
+      </div>
+      <button class="ui orange button" type="submit">Submit</button>
+      <a href="#" class="mini ui red button">
+        <i class="trash icon"></i>Delete
+      </a>
+    </form>
+  </div>
+</div>
+
+<% include ../partials/footer %>

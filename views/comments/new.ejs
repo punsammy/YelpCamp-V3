@@ -12,7 +12,7 @@
     <h1>Add New Comment to <%= campground.name %></h1>
     <form class="ui form" action="/campgrounds/<%= campground._id %>/comments" method="POST">
       <div class="field">
-        <input type="text" name="comment[text]" placeholder="Text">
+        <textarea name="comment[text]" placeholder="Write your thoughts here..."></textarea>
       </div>
       <button class="ui orange button" type="submit">Submit</button>
     </form>

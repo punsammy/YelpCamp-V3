@@ -3,7 +3,7 @@
 <div class="form-page">
 
   <div class="form-nav">
-    <a href="/campgrounds/<%= campground._id %>" class="ui orange button"><i class="angle double left icon"></i>Go Back</a>
+    <a href="/campgrounds/<%= campground._id %>" class="ui black button"><i class="angle double left icon"></i>Go Back</a>
   </div>
 
 
@@ -20,7 +20,7 @@
       </div>
       <div class="field">
         <label>Description</label>
-        <input type="text" name="campground[description]" value="<%= campground.description %>">
+        <textarea name="campground[description]"><%= campground.description %></textarea>
       </div>
       <button class="ui orange button" type="submit">Submit</button>
     </form>
