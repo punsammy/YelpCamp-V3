@@ -104,12 +104,25 @@
   .landing-title {
     margin-top: 20%;
     margin-bottom: 5%;
+    color: white;
+    text-shadow: 8px 8px 8px #000000;
   }
 
   .welcome {
-    font-size: 5em;
-    color: #FFFFFF;
-    text-shadow: 8px 8px 8px #000000;
+    font-size: 7em;
+  }
+
+  .discover {
+    font-size: 2em;
+    border-bottom: 0.1em solid #FFFFFF;
+  }
+
+  .ui.huge.header {
+    font-size: 3.5em;
+  }
+
+  .index-paragraph {
+    font-size: 1.2em;
   }
 
   a#view-button {

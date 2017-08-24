@@ -34,14 +34,15 @@ router.post("/register", function(req, res){
 
 // login Routes
 router.get("/login", function(req,res){
-  res.render("login", {message: req.flash("error")});
+  res.render("login");
 });
 //handling login logic
 //uses passport-local-mongoose to authenticate user using whats in database(local), then redirects
 router.post("/login", passport.authenticate("local",
   {
     successRedirect: "/campgrounds",
-    failureRedirect: "/login"
+    failureRedirect: "/login",
+    failureFlash: true
   }), function(req, res){
 });
 
