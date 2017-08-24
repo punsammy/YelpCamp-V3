@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 var passport = require("passport");
 var User = require("../models/user");
-
+var middleware = require("../middleware");
 
 //root route
 router.get('/', function(req, res) {
@@ -22,10 +22,11 @@ router.post("/register", function(req, res){
   var newUser = new User({username: req.body.username});
   User.register(newUser, req.body.password, function(err, user){
     if (err) {
-      console.log(err);
-      return res.render("register");
+      req.flash("error", err.message);
+      return res.redirect("register");
     }
     passport.authenticate("local")(req, res, function(){
+      req.flash("success", "Welcome to YelpCamp " + user.username)
       res.redirect("/campgrounds");
     });
   });
@@ -33,7 +34,7 @@ router.post("/register", function(req, res){
 
 // login Routes
 router.get("/login", function(req,res){
-  res.render("login");
+  res.render("login", {message: req.flash("error")});
 });
 //handling login logic
 //uses passport-local-mongoose to authenticate user using whats in database(local), then redirects
@@ -47,16 +48,8 @@ router.post("/login", passport.authenticate("local",
 //logout route
 router.get("/logout", function(req, res) {
   req.logout();
+  req.flash("success", "Logged you out!");
   res.redirect("/campgrounds");
 });
-
-//Middleware
-function isLoggedIn(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
-  }
-  res.redirect("/login");
-  console.log("You need to be logged in to gain access");
-}
 
 module.exports = router;

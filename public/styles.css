@@ -47,6 +47,15 @@
     opacity: 0.85;
   }
 
+  .container {
+    position: relative;
+    top: 60px;
+  }
+
+  .ui.red.message {
+    padding-left: 2%;
+  }
+
   #nav-item {
     min-width: 100px;
     line-height: 30px;
@@ -165,7 +174,7 @@
 
   .campground-info {
     text-align: center;
-    border-style: double;
+    border: 1px solid;
     border-color: #cccccc;
     padding-bottom: 2%;
   }

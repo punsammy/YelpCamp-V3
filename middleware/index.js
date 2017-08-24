@@ -1,5 +1,6 @@
 var Campground = require("../models/campground");
 var Comment = require("../models/comment");
+var flash = require("connect-flash");
 //All Middleware goes here
 var middlewareObj ={};
 
@@ -7,16 +8,19 @@ middlewareObj.checkCommentOwnership = function(req, res, next){
   if (req.isAuthenticated()) {
     Comment.findById(req.params.comment_id, function(err, foundComment){
       if (err) {
+        req.flash("error", "Comment not found");
         red.redirect("back");
       } else {
         if (foundComment.author.id.equals(req.user._id)) {
           next();
         } else {
+          req.flash("error", "You don't have permission to do that");
           res.redirect("back");
         }
       };
     });
   } else {
+    req.flash("error", "You need to be logged in to do that!");
     res.redirect("back");
   }
 }
@@ -26,17 +30,20 @@ middlewareObj.checkCampgroundOwnership = function(req, res, next) {
     //is user logged in
     Campground.findById(req.params.id, function(err, foundCampground){
       if (err) {
+        req.flash("error", "Campground not found!");
         res.redirect("back");
       } else {
         //does user own the campground
         if (foundCampground.author.id.equals(req.user._id)) {
           next();
         } else {
+          req.flash("error", "You don't have permission to do that");
           res.redirect("back");
         }
       };
     });
   } else {
+    req.flash("error", "You need to be logged in to do that!");
     res.redirect("back");
   }
 }
@@ -45,10 +52,9 @@ middlewareObj.isLoggedIn = function(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   }
+  req.flash("error", "You need to be logged in to do that!");
   res.redirect("/login");
-  console.log("You need to be logged in to gain access");
 }
-
 
 
  module.exports = middlewareObj;
