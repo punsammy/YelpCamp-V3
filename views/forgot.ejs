@@ -1,0 +1,23 @@
+<% include ./partials/header %>
+
+<div class="form-page">
+
+  <div class="form-nav">
+    <a href="/" class="ui black button"><i class="angle double left icon"></i>Go Back</a>
+  </div>
+
+
+  <div class="yelp-general-form">
+    <h1>Forgot Password</h1>
+    <form class="ui form" action="/forgot" method="POST">
+      <div class="field">
+        <label>Email</label>
+        <input type="email" name="email" placeholder="What's your email?">
+      </div>
+      <button class="ui orange button" type="submit">Reset Password</button>
+    </form>
+  </div>
+</div>
+
+
+<% include ./partials/footer %>

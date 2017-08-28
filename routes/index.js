@@ -2,7 +2,11 @@ var express = require("express");
 var router = express.Router();
 var passport = require("passport");
 var User = require("../models/user");
+var Campground = require("../models/campground");
+var async = require("async");
+var nodemailer = require("nodemailer");
 var middleware = require("../middleware");
+var crypto = require("crypto");
 
 //root route
 router.get('/', function(req, res) {
@@ -19,12 +23,13 @@ router.get("/register", function(req,res) {
 });
 //Handle sign up logic
 router.post("/register", function(req, res){
-  var newUser = new User({username: req.body.username});
+  var newUser = new User({username: req.body.username, email: req.body.email});
   User.register(newUser, req.body.password, function(err, user){
     if (err) {
       req.flash("error", err.message);
       return res.redirect("register");
     }
+    //after registering user, automatically log them in
     passport.authenticate("local")(req, res, function(){
       req.flash("success", "Welcome to YelpCamp " + user.username)
       res.redirect("/campgrounds");
@@ -52,5 +57,67 @@ router.get("/logout", function(req, res) {
   req.flash("success", "Logged you out!");
   res.redirect("/campgrounds");
 });
+
+//forgot password route
+router.get("/forgot", function(req, res){
+  res.render("forgot");
+});
+
+router.post("/forgot", function(req, res, next) {
+// waterfall is array of functions that get called one after anothe in orderr
+  async.waterfall([
+    function(done) {
+      // creating random token
+      crypto.randomBytes(20, function(err, buf) {
+        var token = buf.toString("hex");
+        done(err, token);
+      });
+    },
+    function(token, done) {
+      User.findOne({email: req.body.email }, function(err, user) {
+        if(!user) {
+          req.flash("error", "No account with that email address exists");
+          return res.redirect("/forgot");
+        }
+        user.resetPasswordToken = token;
+        user.resetPasswordExpires = Date.now() + 3600000; //1 hour
+
+        user.save(function(err){
+          done(err, token, user);
+        });
+      });
+    },
+    function(token, user, done) {
+      var smtpTransport = nodemailer.createTransport({
+        service: "hotmail",
+        auth: {
+          user: "amanda.punsammy@live.ca",
+          pass: process.env.GMAILPW
+
+        }
+      });
+      var mailOptions = {
+        to: user.email,
+        from: "amanda.punsammy@live.ca",
+        subject: "YelpCamp Password Reset",
+        text: "Hello,\n\n" +
+        "You are receiving this because you (or someone else) has requested to reset your password on YelpCamp\n\n" +
+        "Please click on the following link, or paste this into your browser to complete the process:\n\n" +
+        "http://" + req.headers.host + "/reset/" + token + "n\\n" +
+        "You have one hour. Duhhh duh duhhhhhh" +
+        "If you did not request this, please ignore this email and your password will remain unchanged. \n\n"
+      };
+      smtpTransport.sendMail(mailOptions, function(err) {
+        req.flash("success", "An e-mail has been sent to " + user.email + "with further instructions.");
+        done(err, "done");
+      });
+    }
+  ], function(err) {
+    if (err) return next(err);
+    res.redirect("/forgot");
+  });
+});
+
+
 
 module.exports = router;
