@@ -1,6 +1,5 @@
 <% include ../partials/header %>
 
-
 <div class="campgrounds-page">
 
   <div class="campgrounds-title">
@@ -11,6 +10,14 @@
     <div class="nav-campgrounds">
       <a href="/campgrounds/new" class="huge ui orange button"><i class="plus icon"></i>Add a new Campground</a>
     </div>
+  </div>
+
+  <div class="search-form-container">
+    <form action="/campgrounds" method="GET" class="ui search">
+      <div class="ui icon input">
+        <input type="text" name="search" palceholder="Campground search..." class="prompt"><i type="submit" class="search icon"></i>
+      </div>
+    </form>
   </div>
 
 

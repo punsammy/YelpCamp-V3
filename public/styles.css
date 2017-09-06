@@ -135,6 +135,19 @@
     margin-top: 5%;
   }
 
+  .search-form-container {
+    margin-top: 1%;
+    text-align: center;
+  }
+
+  .ui.icon.input {
+    width: 40%;
+  }
+
+  .ui.search .prompt{
+    border-radius: 0;
+  }
+
   .campground-desc {
     padding-left: 1%;
     padding-right: 1%;

@@ -137,7 +137,7 @@ router.get('/reset/:token', function(req, res) {
 
 // reset post route
 router.post('/reset/:token', function(req, res) {
-  //using waterfall to ensure functions carried out in correct order
+  //using waterfall to ensure the results from each function is passed
   async.waterfall([
     function(done) {
       // find users using resetPasswordToken
