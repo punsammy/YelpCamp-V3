@@ -21,10 +21,10 @@
         <div class="right menu">
         </div>
           <% if(!currentUser){ %>
-            <a href="/login" class="item" id="nav-item">Login</a>
+            <a href="/login" class="item" id="nav-item"></i>Login</a>
             <a href="/register" class="item" id="nav-item">Sign Up</a>
           <% } else { %>
-            <a href="" class="item" id="nav-item">Signed In As: <%= currentUser.username %></a>
+            <a href="" class="item" id="nav-item"><i class="user circle outline icon"></i><%= currentUser.username %></a>
             <a href="/logout" class="item" id="nav-item">Logout</a>
           <% } %>
         </div>
