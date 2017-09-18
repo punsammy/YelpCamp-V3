@@ -108,6 +108,10 @@
     text-shadow: 8px 8px 8px #000000;
   }
 
+  .typetext {
+    font-size: 1.8em;
+  }
+
   .welcome {
     font-size: 7em;
   }
@@ -276,4 +280,26 @@
   hr {
     border-top: 1px solid #FFFFFF;
   }
+
+  .typed-cursor{
+    opacity: 1;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+}
+@keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-moz-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
 }
