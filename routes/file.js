@@ -26,8 +26,8 @@ var router = express.Router();
         req.flash("error", "Error: " + err);
         res.redirect("back");
       }
+      res.render("fileupload");
       req.flash("success", "Successfully uploaded file!");
-      res.render("landing");
     });
 
    });
