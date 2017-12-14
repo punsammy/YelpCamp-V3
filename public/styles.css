@@ -56,9 +56,8 @@
     padding-left: 2%;
   }
 
-  #nav-item {
+  .nav-item {
     min-width: 100px;
-    line-height: 30px;
     color: #FFFFFF;
   }
 

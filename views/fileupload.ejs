@@ -1,8 +1,11 @@
 <% include ./partials/header %>
 <div class="form-page">
-  <form action="/upload" method="post" enctype="multipart/form-data">
-    <input type="file" name="testfile">
-    <button>Submit</button>
+  <form class="ui form" action="/upload" method="post" enctype="multipart/form-data">
+    <div class="field">
+      <h1>Upload a File!</h1>
+      <input type="file" name="testfile">
+      <button class="ui orange button">Submit</button>
+    </div>
   </form>
 
 </div>

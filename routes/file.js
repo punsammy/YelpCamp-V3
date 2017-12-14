@@ -15,22 +15,19 @@ var router = express.Router();
     var s3bucket = new AWS.S3({
       accessKeyId: process.env.YELPCAMPACCESSKEY,
       secretAccessKey: process.env.YELPCAMPSECRETACCESSKEY,
-      Bucket: 'yelpcamp2'
+      Bucket: 'yelpcamphark'
     });
-    s3bucket.createBucket(function () {
-        var params = {
-          Bucket: 'yelpcamp2',
-          Key: file.name,
-          Body: file.data
-        };
-        s3bucket.upload(params, function (err, data) {
-          if (err) {
-            req.flash("error", "Error: " + err);
-            res.redirect("back");
-          }
-          req.flash("success", "Successfully uploaded file!");
-          res.render("landing");
-        });
+    s3bucket.upload({
+      Bucket: 'yelpcamphark',
+      Key: file.name,
+      Body: file.data
+    }, function (err, data) {
+      if (err) {
+        req.flash("error", "Error: " + err);
+        res.redirect("back");
+      }
+      req.flash("success", "Successfully uploaded file!");
+      res.render("landing");
     });
 
    });

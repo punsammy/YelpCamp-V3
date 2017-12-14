@@ -16,17 +16,18 @@
 
     <nav class="nav-bar">
       <div class="ui inverted menu">
-        <a href="/" class="active item" id="nav-item">
+        <a href="/" class="active item nav-item">
           YelpCamp
         </a>
         <div class="right menu">
         </div>
+          <a href="/upload" class="item nav-item">Upload</a>
           <% if(!currentUser){ %>
-            <a href="/login" class="item" id="nav-item"></i>Login</a>
-            <a href="/register" class="item" id="nav-item">Sign Up</a>
+            <a href="/login" class="item nav-item"></i>Login</a>
+            <a href="/register" class="item nav-item">Sign Up</a>
           <% } else { %>
-            <a href="" class="item" id="nav-item"><i class="user circle outline icon"></i><%= currentUser.username %></a>
-            <a href="/logout" class="item" id="nav-item">Logout</a>
+            <a href="" class="item nav-item"><i class="user circle outline icon"></i><%= currentUser.username %></a>
+            <a href="/logout" class="item nav-item">Logout</a>
           <% } %>
         </div>
       </div>

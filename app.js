@@ -36,7 +36,7 @@ mongoose.Promise = global.Promise;
 
 //Passport Configuration
 app.use(require("express-session")({
-  secret: "Shakti wins cutest bird!",
+  secret: "This is the secret!",
   resave: false,
   saveUninitialized: false
 }));
