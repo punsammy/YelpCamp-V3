@@ -1,30 +1,38 @@
+var AWS = require('aws-sdk');
 var Busboy = require('busboy');
 var express = require("express");
 var router = express.Router();
-  router.post('/api/upload', function (req, res, next) {
-   // This grabs the additional parameters so in this case passing
-   // in "element1" with a value
-   var element1 = req.body.element1;
+  router.get('/upload', function(req, res){
+    res.render("fileupload");
+  });
+  router.post('/upload', function (req, res, next) {
    var busboy = new Busboy({ headers: req.headers });
    // The file upload has completed
    busboy.on('finish', function() {
-    console.log('Upload finished');
-    // files are stored in req.files
-    // req.files.element2:
-    // This returns:
-    // {
-    //    element2: {
-    //      data: ...contents of the file...,
-    //      name: 'Example.jpg',
-    //      encoding: '7bit',
-    //      mimetype: 'image/png',
-    //      truncated: false,
-    //      size: 959480
-    //    }
-    // }
-    // Grabs file object from the request.
-    var file = req.files.element2;
+    var file = req.files.testfile;
     console.log(file);
+
+    var s3bucket = new AWS.S3({
+      accessKeyId: process.env.YELPCAMPACCESSKEY,
+      secretAccessKey: process.env.YELPCAMPSECRETACCESSKEY,
+      Bucket: 'yelpcamp2'
+    });
+    s3bucket.createBucket(function () {
+        var params = {
+          Bucket: 'yelpcamp2',
+          Key: file.name,
+          Body: file.data
+        };
+        s3bucket.upload(params, function (err, data) {
+          if (err) {
+            req.flash("error", "Error: " + err);
+            res.redirect("back");
+          }
+          req.flash("success", "Successfully uploaded file!");
+          res.render("landing");
+        });
+    });
+
    });
    req.pipe(busboy);
   });
