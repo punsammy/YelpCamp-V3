@@ -191,6 +191,11 @@
     margin: auto;
   }
 
+  .button-container ul{
+    text-align: center;
+    list-style: none;
+  }
+
   .show-image-container img {
     border-radius: 0;
     margin-bottom: 0;
