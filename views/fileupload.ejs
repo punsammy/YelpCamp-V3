@@ -13,8 +13,9 @@
       <h2>Files:</h2>
       <% files.forEach(function(file){ %>
         <li>
-          <button class="ui small yellow button"><%= file.name %></button>
+          <a href="./download/<%= file.name %>" class="ui small yellow button"><%= file.name %></a>
         </li>
+        <br>
       <% }) %>
     </ul>
   </div>
