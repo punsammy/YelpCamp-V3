@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 var detailSchema = new mongoose.Schema({
-  name: String
+  text: String
 });
 
 module.exports = mongoose.model('Detail', detailSchema);

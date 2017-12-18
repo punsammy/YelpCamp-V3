@@ -3,8 +3,8 @@ var Busboy = require('busboy');
 var express = require("express");
 var Yelpfile = require("../models/file");
 var Campground = require("../models/campground");
+var Detail = require("../models/detail");
 var router = express.Router();
-var fs = require("fs");
 
 router.get('/files', function(req, res){
   Yelpfile.find({}, function(err, files){
@@ -77,12 +77,37 @@ router.get("/details", function(req, res){
   res.render("detail");
 });
 
-router.post("/details/create/:id", function(req, res){
-  var text = req.body.sowtext;
-  var sow = fs.createWriteStream("sow.ejs");
-  sow.write(text + sowGeneral);
-  sow.end();
-
+router.post("/details/:id/new", function(req, res){
+  Campground.findById(req.params.id, function(err, campground){
+    Detail.create({text: req.body.detail}, function(err, newDetail){
+      if (err) {
+        console.log(err);
+        res.redirect("back");
+      } else {
+        campground.detail = newDetail;
+        campground.save();
+        res.redirect("back");
+      }
+    });
+  });
 });
+
+// create file
+// var details = fs.createWriteStream(campground.id + ".txt");
+// details.write(text);
+// details.end();
+//
+
+// ajax request quill js
+// Detail.create(data, function(err, newDetail){
+//   if (err) {
+//     console.log(err);
+//   } else {
+//     campground.detail.push(newDetail);
+//     campground.save();
+//     console.log("Done");
+//   }
+// });
+
 
 module.exports = router;
