@@ -290,7 +290,12 @@
     -webkit-animation: blink 0.7s infinite;
     -moz-animation: blink 0.7s infinite;
     animation: blink 0.7s infinite;
-}
+  }
+  .file-div {
+    width: 60%;
+    margin: auto;
+  }
+  
 @keyframes blink{
     0% { opacity:1; }
     50% { opacity:0; }
