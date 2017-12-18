@@ -2,7 +2,9 @@ var AWS = require('aws-sdk');
 var Busboy = require('busboy');
 var express = require("express");
 var Yelpfile = require("../models/file");
+var Campground = require("../models/campground");
 var router = express.Router();
+var fs = require("fs");
 
 router.get('/files', function(req, res){
   Yelpfile.find({}, function(err, files){
@@ -69,6 +71,18 @@ router.get('/files/download/:name', function (req, res, next) {
      });
      s3bucket.getObject(options).createReadStream().pipe(res);
   }
+});
+
+router.get("/details", function(req, res){
+  res.render("detail");
+});
+
+router.post("/details/create/:id", function(req, res){
+  var text = req.body.sowtext;
+  var sow = fs.createWriteStream("sow.ejs");
+  sow.write(text + sowGeneral);
+  sow.end();
+
 });
 
 module.exports = router;
