@@ -6,6 +6,8 @@ var Campground = require("../models/campground");
 var Detail = require("../models/detail");
 var router = express.Router();
 
+//ADDING ATTACHMENTS
+// INDEX
 router.get('/files', function(req, res){
   Yelpfile.find({}, function(err, files){
     if (err) {
@@ -16,6 +18,7 @@ router.get('/files', function(req, res){
   });
 });
 
+// UPLOAD FILES
 router.post('/files/upload', function (req, res, next) {
  var busboy = new Busboy({ headers: req.headers });
  busboy.on('finish', function() {
@@ -52,6 +55,7 @@ router.post('/files/upload', function (req, res, next) {
  req.pipe(busboy);
 });
 
+// DOWNLOAD FILES
 router.get('/files/download/:name', function (req, res, next) {
   var fileName = req.params.name;
   if (!fileName) {
@@ -73,11 +77,8 @@ router.get('/files/download/:name', function (req, res, next) {
   }
 });
 
-router.get("/details", function(req, res){
-  res.render("detail");
-});
-
-router.post("/details/:id/new", function(req, res){
+// POST DETAILS ROUTE
+router.post("/campgrounds/:id/details/new", function(req, res){
   Campground.findById(req.params.id, function(err, campground){
     Detail.create({text: req.body.detail}, function(err, newDetail){
       if (err) {
@@ -90,6 +91,11 @@ router.post("/details/:id/new", function(req, res){
       }
     });
   });
+});
+
+// Get details route
+router.get("/campgrounds/:id/details/:detail_id", function(req, res){
+  res.render("landing");
 });
 
 // create file

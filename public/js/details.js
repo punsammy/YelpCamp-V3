@@ -1,3 +1,8 @@
+function openWindow(e){
+  e.stopPropagation();
+  window.open("/campground/<%= campground.id %>/details/<%= campground.detail %>");
+}
+
 // var form = document.querySelector('form');
 // form.onsubmit = function() {
 //   // Populate hidden form on submit

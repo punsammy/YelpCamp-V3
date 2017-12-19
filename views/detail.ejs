@@ -1,5 +1,5 @@
 <div class="editor-container">
-  <form action="/details/create/<%= campground._id %>" method="POST">
+  <form action="/campgrounds/<%= campground.id %>/details/new %>" method="POST">
     <input type="hidden" name="details">
     <div id="editor">
       <p>Hello World!</p>
@@ -12,9 +12,11 @@
   </form>
 </div>
 
-<a href="">View Details</a>
+<% if(campground.detail){ %>
+  <a href="/campgrounds/<%= campground.id %>/details/<%= campground.detail %>" onclick="openWindow()">View Details</a>
+<% } %>
 
-<form class="" action="/details/<%= campground._id %>/new" method="post">
+<form class="" action="/campgrounds/<%= campground.id %>/details/new %>" method="post">
   <textarea type="text" name="detail"></textarea>
   <button type="submit" class="ui red button">Create File</button>
 </form>
