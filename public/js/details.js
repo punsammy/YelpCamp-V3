@@ -1,6 +1,7 @@
-function openWindow(e){
-  e.stopPropagation();
-  window.open("/campground/<%= campground.id %>/details/<%= campground.detail %>");
+function openWindow(campground, detail){
+  console.log(detail);
+  console.log(campground);
+  window.open("/campgrounds/" + campground + "/details/" + detail);
 }
 
 // var form = document.querySelector('form');

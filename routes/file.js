@@ -95,7 +95,16 @@ router.post("/campgrounds/:id/details/new", function(req, res){
 
 // Get details route
 router.get("/campgrounds/:id/details/:detail_id", function(req, res){
-  res.render("landing");
+  Campground.findById(req.params.id, function(err, campground){
+    if (err) {
+      res.redirect("/");
+      console.log(err);
+    } else {
+      Detail.findById(req.params.detail_id, function(err, detail){
+        res.render("details/edit", {campground: campground, detail: detail})
+      });
+    }
+  });
 });
 
 // create file

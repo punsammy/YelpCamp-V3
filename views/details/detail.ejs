@@ -13,7 +13,7 @@
 </div>
 
 <% if(campground.detail){ %>
-  <a href="/campgrounds/<%= campground.id %>/details/<%= campground.detail %>" onclick="openWindow()">View Details</a>
+  <button onclick="openWindow('<%= campground.id %>', '<%= campground.detail %>')">View Details</button>
 <% } %>
 
 <form class="" action="/campgrounds/<%= campground.id %>/details/new %>" method="post">
