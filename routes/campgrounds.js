@@ -52,7 +52,7 @@ router.get('/new', middleware.isLoggedIn, function(req, res) {
 
 // show page - more info about one campground
 router.get('/:id', function(req, res) {
-  Campground.findById(req.params.id).populate('comments').exec(function(err, foundCampground){
+  Campground.findById(req.params.id).populate('comments').populate('detail').exec(function(err, foundCampground){
     if (err) {
       console.log(err);
     } else {

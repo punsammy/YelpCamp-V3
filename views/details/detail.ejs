@@ -1,19 +1,18 @@
 <div class="editor-container">
-  <form action="/campgrounds/<%= campground.id %>/details/new %>" method="POST">
-    <input type="hidden" name="details">
-    <div id="editor">
-      <p>Hello World!</p>
-      <p>This is where you can submit text to <strong>create</strong> a file!</p>
-      <p><br></p>
-    </div>
-    <div class="editor-button-container">
-      <button type="submit" class="ui red button">Create File</button>
-    </div>
-  </form>
+  <div class="editor-form" id="editor">
+    <p>Hello World!</p>
+    <p>This is where you can submit text to <strong>create</strong> a file!</p>
+    <p><br></p>
+  </div>
+  <div class="editor-button-container">
+    <!-- call function on click -->
+    <button onclick="submitEditor('<%= campground.id %>')" type="submit" id="submit-details" class="ui red button">Create File</button>
+  </div>
 </div>
 
 <% if(campground.detail){ %>
-  <button onclick="openWindow('<%= campground.id %>', '<%= campground.detail %>')">View Details</button>
+  <button onclick="openWindow('<%= campground.id %>', '<%= campground.detail.id %>')">View Details</button>
+  <button onclick="pdf()">Download Details</button>
 <% } %>
 
 <form class="" action="/campgrounds/<%= campground.id %>/details/new %>" method="post">

@@ -80,7 +80,8 @@ router.get('/files/download/:name', function (req, res, next) {
 // POST DETAILS ROUTE
 router.post("/campgrounds/:id/details/new", function(req, res){
   Campground.findById(req.params.id, function(err, campground){
-    Detail.create({text: req.body.detail}, function(err, newDetail){
+    // create new Detail with text as the data (bob) sent from quill js ajax request
+    Detail.create({text: req.body.bob}, function(err, newDetail){
       if (err) {
         console.log(err);
         res.redirect("back");
@@ -101,7 +102,7 @@ router.get("/campgrounds/:id/details/:detail_id", function(req, res){
       console.log(err);
     } else {
       Detail.findById(req.params.detail_id, function(err, detail){
-        res.render("details/edit", {campground: campground, detail: detail})
+        res.render("details/show", {campground: campground, detail: detail})
       });
     }
   });
