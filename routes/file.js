@@ -108,22 +108,4 @@ router.get("/campgrounds/:id/details/:detail_id", function(req, res){
   });
 });
 
-// create file
-// var details = fs.createWriteStream(campground.id + ".txt");
-// details.write(text);
-// details.end();
-//
-
-// ajax request quill js
-// Detail.create(data, function(err, newDetail){
-//   if (err) {
-//     console.log(err);
-//   } else {
-//     campground.detail.push(newDetail);
-//     campground.save();
-//     console.log("Done");
-//   }
-// });
-
-
 module.exports = router;
